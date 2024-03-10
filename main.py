@@ -6,6 +6,7 @@ from loader.getter import get_train_loader, get_test_loader
 from models.arch_config import DeepLabModel
 from utils.early_stopping import EarlyStopping
 from utils.metrics import getDiceLoss, getIoU
+from utils.plots import generate_plots
 
 parser = argparse.ArgumentParser(description='PyTorch MocoV2 pre-training')
 parser.add_argument('--data_path', metavar='PATH', default='data/', type=str,
@@ -43,6 +44,7 @@ def train(args, train_epoch, test_epoch, train_dataloader, test_dataloader):
             print("Early stopping")
             break
     print("Best IoU:", early_stopping.best_score)
+    generate_plots(args, train_logs_list, test_logs_list)
 
 
 if __name__ == '__main__':
