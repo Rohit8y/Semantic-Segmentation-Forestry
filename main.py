@@ -1,6 +1,8 @@
 import argparse
 import torch
 
+from models.arch_config import DeepLabModel
+
 parser = argparse.ArgumentParser(description='PyTorch MocoV2 pre-training')
 parser.add_argument('--arch', metavar='ARCH', default='resnet18',
                     help='model architecture: resnet 18|34|50|101|152')
@@ -16,5 +18,11 @@ parser.add_argument('--momentum', metavar='M', default=0.9, type=float,
                     help='momentum used in case of SGD optimizer')
 
 if __name__ == '__main__':
-    print("Parsing arguments")
+    print("Parsing arguments...")
     args = parser.parse_args()
+
+    # Generate model
+    obj = DeepLabModel(arch=args.arch)
+    model = obj.get_model()
+    preprocessing = obj.get_preprocessing()
+    print("Model obtained...")
