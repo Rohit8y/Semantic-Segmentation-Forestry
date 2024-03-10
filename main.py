@@ -11,6 +11,8 @@ from utils.plots import generate_plots
 parser = argparse.ArgumentParser(description='PyTorch MocoV2 pre-training')
 parser.add_argument('--data_path', metavar='PATH', default='data/', type=str,
                     help='the path to the dataset generated')
+parser.add_argument('--output_path', metavar='OUTPUT', default='output/', type=str,
+                    help='output directory for all models and plots')
 parser.add_argument('--arch', metavar='ARCH', default='resnet18',
                     help='model architecture: resnet 18|34|50|101|152')
 parser.add_argument('--epochs', metavar='EPOCHS', default=100, type=int,
@@ -29,7 +31,8 @@ parser.add_argument('--momentum', metavar='M', default=0.9, type=float,
 
 def train(args, train_epoch, test_epoch, train_dataloader, test_dataloader):
     print("Training...")
-    early_stopping = EarlyStopping(patience=10, verbose=True, delta=0.001, mode='min', model=model)
+    early_stopping = EarlyStopping(patience=10, verbose=True, delta=0.001, mode='min', model=model,
+                                   dir=args.output_path)
     train_logs_list, test_logs_list = [], []
 
     for i in range(0, args.epochs):

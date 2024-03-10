@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import torch
 
@@ -5,7 +6,7 @@ import torch
 class EarlyStopping:
     """Early stops the training if validation loss doesn't improve after a given patience."""
 
-    def __init__(self, patience, verbose, delta, mode, model):
+    def __init__(self, patience, verbose, delta, mode, model, output_path):
         """
         Args:
             patience (int): How long to wait after last time validation loss improved.
@@ -15,8 +16,10 @@ class EarlyStopping:
             delta (float): Minimum change in the monitored quantity to qualify as an improvement.
                             Default: 0
             mode (str): Procedure for determining the best score.
-
             model : Will be used to store best models
+            output_path (str): Path where models are saved
+
+
         """
 
         self.patience = patience
@@ -25,6 +28,7 @@ class EarlyStopping:
         self.early_stop = False
         self.mode = mode
         self.model = model
+        self.output_path = output_path
 
         if self.mode == 'min':
             self.criterion = np.less
@@ -77,7 +81,8 @@ class EarlyStopping:
             print(
                 f'Validation {score_name} {comportement} ({self.best_score:.6f} --> {score:.6f}).  Saving model ...'
             )
-        torch.save(model, './best_model.pth')
+        model_path = os.path.join(self.output_path, 'best_model.pth')
+        torch.save(model, model_path)
 
     def get_best_score(self):
         return self.best_score
