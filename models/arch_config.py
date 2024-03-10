@@ -1,33 +1,26 @@
-import torch.nn as nn
-import torchvision.models as models
-from torchinfo import summary
+import segmentation_models_pytorch as smp
 
 
-class ResNet(nn.Module):
+class DeepLabModel():
+    def __init__(self, arch="resnet18", pretrained="imagenet", classes=2, activation="sigmoid"):
+        self.arch = arch
+        self.pretrained = pretrained
+        # create segmentation model with pretrained encoder
+        self.model = smp.DeepLabV3Plus(
+            encoder_name=arch,
+            encoder_weights=pretrained,
+            classes=classes,
+            activation=activation,
+        )
 
-    def __init__(self, base_model, out_dim=128):
-        super(ResNet, self).__init__()
-        self.base_model = base_model
-        self.resnet_dict = {"resnet18": models.resnet18(weights=None, num_classes=out_dim),
-                            "resnet34": models.resnet34(weights=None, num_classes=out_dim),
-                            "resnet50": models.resnet50(weights=None, num_classes=out_dim)}
+    def get_model(self):
+        return self.model
 
-        self.backbone = self._get_basemodel(base_model)
-
-    def _get_basemodel(self, model_name):
-        try:
-            model = self.resnet_dict[model_name]
-        except KeyError:
-            print(
-                "Invalid backbone architecture. Check the config file")
-            print("Invalid mode name: ", model_name)
-        else:
-            return model
-
-    def forward(self, x):
-        return self.backbone(x)
+    def get_preprocessing(self):
+        preprocessing_fn = smp.encoders.get_preprocessing_fn(self.arch, self.pretrained)
+        return preprocessing_fn
 
 
 if __name__ == "__main__":
-    model = ResNet("resnet18", out_dim=512)
-    txt = summary(model=model, input_size=(1, 3, 224, 224), depth=4)
+    deepObj = DeepLabModel()
+    print(deepObj.get_model())
