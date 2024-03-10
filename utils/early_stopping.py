@@ -78,3 +78,6 @@ class EarlyStopping:
                 f'Validation {score_name} {comportement} ({self.best_score:.6f} --> {score:.6f}).  Saving model ...'
             )
         torch.save(model, './best_model.pth')
+
+    def get_best_score(self):
+        return self.best_score
