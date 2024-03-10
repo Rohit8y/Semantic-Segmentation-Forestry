@@ -1,4 +1,6 @@
 import argparse
+import os.path
+
 import torch
 from segmentation_models_pytorch.utils.train import TrainEpoch, ValidEpoch
 
@@ -15,7 +17,7 @@ parser.add_argument('--output_path', metavar='OUTPUT', default='output/', type=s
                     help='output directory for all models and plots')
 parser.add_argument('--arch', metavar='ARCH', default='resnet18',
                     help='model architecture: resnet 18|34|50|101|152')
-parser.add_argument('--epochs', metavar='EPOCHS', default=100, type=int,
+parser.add_argument('--epochs', metavar='EPOCHS', default=5, type=int,
                     help='Number of epochs to train our network for')
 parser.add_argument('--lr', metavar='LR', default=0.00005, type=float,
                     help='Learning rate for training the model')
@@ -23,7 +25,7 @@ parser.add_argument('--wd', metavar='WD', default=0.001, type=float,
                     help='the weight decay value for decaying the weights of the model')
 parser.add_argument('--batch_size', metavar='BS', default=2, type=int,
                     help='mini batch size for training')
-parser.add_argument('--optimizer', metavar='OPT', default='sgd', type=str,
+parser.add_argument('--optimizer', metavar='OPT', default='adam', type=str,
                     help='optimizer for updating the weights of the model: [sgd,adam]')
 parser.add_argument('--momentum', metavar='M', default=0.9, type=float,
                     help='momentum used in case of SGD optimizer')
@@ -32,7 +34,7 @@ parser.add_argument('--momentum', metavar='M', default=0.9, type=float,
 def train(args, train_epoch, test_epoch, train_dataloader, test_dataloader):
     print("Training...")
     early_stopping = EarlyStopping(patience=10, verbose=True, delta=0.001, mode='min', model=model,
-                                   dir=args.output_path)
+                                   output_path=args.output_path)
     train_logs_list, test_logs_list = [], []
 
     for i in range(0, args.epochs):
@@ -53,6 +55,8 @@ def train(args, train_epoch, test_epoch, train_dataloader, test_dataloader):
 if __name__ == '__main__':
     print("Parsing arguments...")
     args = parser.parse_args()
+    if not os.path.exists(args.output_path):
+        os.makedirs(args.output_path)
 
     # Generate model
     obj = DeepLabModel(arch=args.arch)

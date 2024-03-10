@@ -24,6 +24,7 @@ def generate_plots(args, train_logs_list, test_logs_list):
     epochsList = np.arange(1, len(trainDice) + 1, 1)
     plotResults(args, epochsList, trainDice, testDice, "Train Dice Loss", "Test Dice Loss", "Epochs", "Dice Loss",
                 "Dice Loss for DeepLabV3 pretrained on " + args.arch)
+    plt.clf()
     plotResults(args, epochsList, trainIou, testIou, "Train IoU score", "Test IoU score", "Epochs", "IoU Score",
                 "IoU Score for DeepLabV3 pretrained on " + args.arch)
 
