@@ -10,7 +10,7 @@ from utils.early_stopping import EarlyStopping
 from utils.metrics import getDiceLoss, getIoU
 from utils.plots import generate_plots
 
-parser = argparse.ArgumentParser(description='PyTorch MocoV2 pre-training')
+parser = argparse.ArgumentParser(description='PyTorch implementation of semantic segmentation on satellite images.')
 parser.add_argument('--data_path', metavar='PATH', default='data/', type=str,
                     help='the path to the dataset generated')
 parser.add_argument('--output_path', metavar='OUTPUT', default='output/', type=str,
