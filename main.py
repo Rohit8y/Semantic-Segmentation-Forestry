@@ -27,7 +27,6 @@ if __name__ == '__main__':
     # Generate model
     obj = DeepLabModel(arch=args.arch)
     model = obj.get_model()
-    preprocessing = obj.get_preprocessing()
     print("Model obtained...")
 
     # Generate dataloaders

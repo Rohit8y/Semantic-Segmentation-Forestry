@@ -11,7 +11,7 @@ transformMyData = transforms.Compose([
 
 
 def get_train_loader(args, shuffle=True):
-    trainData = GoettingenDataset(args.data_path, train=True, transform=transformMyData)
+    trainData = GoettingenDataset(args.data_path, train=True, transform=None)
     train_dataloader = DataLoader(trainData, batch_size=args.batch_size, shuffle=shuffle)
     return train_dataloader
 
