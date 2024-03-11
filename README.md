@@ -25,7 +25,7 @@ We utilized the Göttingen aerial dataset for our experiments. However, this dat
 **1.** Clone the repository:
 
 ``` shell
-git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.gitt
+git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.git
 cd Satellite-Segmentation-Forestry
 ```
 
