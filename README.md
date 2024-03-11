@@ -25,8 +25,8 @@ We utilized the Göttingen aerial dataset for our experiments. However, this dat
 **1.** Clone the repository:
 
 ``` shell
-git clone git@github.com:Rohit8y/Financial-Time-Series.git
-cd Financial-Time-Series
+git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.gitt
+cd Satellite-Segmentation-Forestry
 ```
 
 **2.** Create a new Python environment and activate it:
