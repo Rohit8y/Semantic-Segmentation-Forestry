@@ -6,8 +6,7 @@
 2. [Installation](#install)
 3. [Data Preparation](#prepare)
 4. [Training](#train)
-5. [Metrics](#metrics)
-6. [References](#ref)
+5. [References](#ref)
 
 ---
 
@@ -47,6 +46,10 @@ $ pip install -r requirements.txt
 
 ### [***Data Preparation***](#) <a name="prepare"></a>
 
+
+---
+
+### [***Training***](#) <a name="train"></a>
 
 
 ---
