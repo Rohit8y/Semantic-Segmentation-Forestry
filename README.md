@@ -25,8 +25,8 @@ We utilized the Göttingen aerial dataset for our experiments. However, this dat
 **1.** Clone the repository:
 
 ``` shell
-git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.git
-cd Satellite-Segmentation-Forestry
+$ git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.git
+$ cd Satellite-Segmentation-Forestry
 ```
 
 **2.** Create a new Python environment and activate it:
@@ -45,8 +45,20 @@ $ pip install -r requirements.txt
 ---
 
 ### [***Data Preparation***](#) <a name="prepare"></a>
+The Göttingen dataset is partitioned into training and test sets following an 80:20 ratio. To ensure seamless integration of the data format with the code, we can utilize the generate_dataset.sh script. This script automates the process of downloading the datasets and organizing them within the designated data folder.
 
+**1.** Give execution permission to the script:
 
+```
+$ cd Satellite-Segmentation-Forestry
+$ chmod 777 generate_dataset.sh
+```
+
+**2.** Run the script:
+
+```
+$ ./generate_dataset.sh
+```
 ---
 
 ### [***Training***](#) <a name="train"></a>
