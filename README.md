@@ -93,5 +93,9 @@ Russakovsky, Olga, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
 <a id="2">[2]</a> 
 Chen, Liang-Chieh, George Papandreou, Florian Schroff, and Hartwig Adam. "Rethinking atrous convolution for semantic image segmentation." arXiv preprint arXiv:1706.05587 (2017).
 
+---
+### Coming Soon:
+- [ ] Download optimized ResNet models
+- [ ] Evaluation script
 
 
