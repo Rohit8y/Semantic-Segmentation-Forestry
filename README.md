@@ -1,4 +1,4 @@
-# Satellite Semantic Segmentation Forestry
+# Semantic Segmentation Forestry
 
 
 ### [**Contents**](#)
@@ -25,8 +25,8 @@ We utilized the Göttingen aerial dataset for our experiments. However, this dat
 **1.** Clone the repository:
 
 ``` shell
-$ git clone git@github.com:Rohit8y/Satellite-Segmentation-Forestry.git
-$ cd Satellite-Segmentation-Forestry
+$ git clone git@github.com:Rohit8y/Semantic-Segmentation-Forestry.git
+$ cd Semantic-Segmentation-Forestry
 ```
 
 **2.** Create a new Python environment and activate it:
