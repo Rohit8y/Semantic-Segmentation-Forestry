@@ -81,6 +81,7 @@ usage options:
   --wd                  weight decay (default: 0.001)
   --optimizer           optimizer for updating the weights of the model: [sgd,adam]
   --momentum            momentum value in case of sgd optimizer
+```
 
 ---
 
