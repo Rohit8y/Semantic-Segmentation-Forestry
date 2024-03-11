@@ -1,0 +1,8 @@
+gradio==4.21.0
+matplotlib==3.7.1
+numpy==1.23.5
+Pillow==10.2.0
+seaborn==0.13.2
+segmentation_models_pytorch==0.3.2
+torch==1.13.0
+torchvision==0.14.0
