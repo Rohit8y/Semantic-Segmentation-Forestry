@@ -63,7 +63,25 @@ $ ./generate_dataset.sh
 
 ### [***Training***](#) <a name="train"></a>
 
-The fine-tuning of pre-trained models for the image segmentation task is accomplished using the main.py script. This script allows you to configure various parameters, load your dataset, and initiate the fine-tuning process to adapt the pre-trained models to your specific segmentation task. After fine-tuning, the script saves the optimized model weights for deployment on new, unseen images.
+The fine-tuning of pre-trained models for the segmentation task is accomplished using the main.py script. This script allows you to configure various parameters, load your dataset, and initiate the fine-tuning process to adapt the pre-trained models. After fine-tuning, the script saves the optimized model weights for deployment on new, unseen images
+
+```
+python main.py -h
+
+usage: main.py [-h] [--data_path PATH] [--output_path OUTPUT] [--arch ARCH] [--epochs EPOCHS] [--lr LR]
+               [--batch-size BS] [--wd WD] [--optimizer OPT] [--momentum M]
+usage options:
+  --help                show this help message and exit
+  --data_path           the path pointing the dataset generated using generate_dataset.sh script
+  --output_path         output directory for all models and plots
+  --arch                architecture of the pre-trained encoder: [resnet 18|34|50|101|152]
+  --epochs              number of total epochs to run (default: 50)
+  --lr                  initial learning rate (default: 0.00005)
+  --batch-size          mini-batch size (default: 2)
+  --wd                  weight decay (default: 0.001)
+  --optimizer           optimizer for updating the weights of the model: [sgd,adam]
+  --momentum            momentum value in case of sgd optimizer
+
 ---
 
 ### [**References**](#) <a name="ref"></a>
