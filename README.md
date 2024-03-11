@@ -63,7 +63,7 @@ $ ./generate_dataset.sh
 
 ### [***Training***](#) <a name="train"></a>
 
-
+The fine-tuning of pre-trained models for the image segmentation task is accomplished using the main.py script. This script allows you to configure various parameters, load your dataset, and initiate the fine-tuning process to adapt the pre-trained models to your specific segmentation task. After fine-tuning, the script saves the optimized model weights for deployment on new, unseen images.
 ---
 
 ### [**References**](#) <a name="ref"></a>
